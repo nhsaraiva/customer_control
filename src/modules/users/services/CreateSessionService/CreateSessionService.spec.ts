@@ -1,18 +1,21 @@
 import UserRepository from '../../infra/fake/repositories/FakeUserRepository';
 import AppError from '../../../../shared/errors/AppError';
 import CreateSessionService from './CreateSessionService';
-import HashProvider from '../../../../shared/providers/HashProvider';
+import HashProvider from '../../../../shared/infra/fakes/FakeHashProvider';
+import TokenProvider from '../../../../shared/infra/fakes/FakeTokenProvider';
 import { IUser } from '../../domain/models/IUser';
 
 let createSessionService: CreateSessionService;
 let userRepository: UserRepository;
 let hashProvider: HashProvider;
+let tokenProvider: TokenProvider;
 let userCreated: IUser;
 
 describe('CreateSessionService', () => {
   beforeEach(async () => {
     userRepository = new UserRepository();
     hashProvider = new HashProvider();
+    tokenProvider = new TokenProvider();
 
     userCreated = await userRepository.create({
       name: 'Teste Saraiva',
@@ -23,6 +26,7 @@ describe('CreateSessionService', () => {
     createSessionService = new CreateSessionService(
       userRepository,
       hashProvider,
+      tokenProvider,
     );
   });
 
