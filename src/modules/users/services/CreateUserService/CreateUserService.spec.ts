@@ -1,7 +1,7 @@
 import UserRepository from '../../infra/fake/repositories/FakeUserRepository';
 import AppError from '../../../../shared/errors/AppError';
 import CreateUserService from './CreateUserService';
-import HashProvider from '../../../../shared/providers/HashProvider';
+import HashProvider from '../../../../shared/infra/fakes/FakeHashProvider';
 
 let createUserService: CreateUserService;
 let userRepository: UserRepository;
@@ -11,7 +11,7 @@ describe('CreateUserService', () => {
   beforeEach(() => {
     userRepository = new UserRepository();
     hashProvider = new HashProvider();
-    createUserService = new CreateUserService(userRepository);
+    createUserService = new CreateUserService(userRepository, hashProvider);
   });
 
   it('should create a user successfully', async () => {
