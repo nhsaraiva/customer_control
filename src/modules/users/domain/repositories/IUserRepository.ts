@@ -1,5 +1,4 @@
 import { ICreateUser } from '../models/ICreateUser';
-import { IShowUser } from '../models/IShowUser';
 import { IUser } from '../models/IUser';
 
 export interface IUserRepositoy {

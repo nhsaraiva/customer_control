@@ -40,7 +40,7 @@ describe('UpdateUserService', () => {
 
   it('should return error if user not exists', async () => {
     expect(
-      await updateUserService.execute({
+      updateUserService.execute({
         id: 'idnotexists',
         name: 'Teste Saraiva Updated',
         email: 'testeupdated@saraiva.com',
@@ -50,11 +50,48 @@ describe('UpdateUserService', () => {
 
   it('should return error if email exists in another users', async () => {
     expect(
-      await updateUserService.execute({
+      updateUserService.execute({
         id: userCreated.id,
         name: 'Teste Saraiva',
         email: 'teste2@saraiva.com',
       }),
     ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should return error if password passed but old_password not passed', async () => {
+    expect(
+      updateUserService.execute({
+        id: userCreated.id,
+        name: 'Teste Saraiva',
+        email: 'testeupdpassword@saraiva.com',
+        password: 'newpassword',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should return error if old_password not match with actual password', async () => {
+    expect(
+      updateUserService.execute({
+        id: userCreated.id,
+        name: 'Teste Saraiva',
+        email: 'testeupdpassword@saraiva.com',
+        password: 'newpassword',
+        old_password: 'newpassword',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should return updated user if email not exists in another users and password match with old password', async () => {
+    let updatedUser = await updateUserService.execute({
+      id: userCreated.id,
+      name: 'Teste Saraiva Updated',
+      email: 'testeupdated@saraiva.com',
+      password: 'newpassword',
+      old_password: 'testpassword',
+    });
+
+    expect(await userRepository.findById(userCreated.id)).toMatchObject(
+      updatedUser,
+    );
   });
 });

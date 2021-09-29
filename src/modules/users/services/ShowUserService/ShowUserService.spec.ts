@@ -31,7 +31,7 @@ describe('ShowUserService', () => {
   it('should return an error if user not exists', async () => {
     expect(
       showUserService.execute({
-        id: 'notexistsid',
+        id: 'idnotexists',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });
