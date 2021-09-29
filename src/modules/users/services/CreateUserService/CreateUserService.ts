@@ -6,14 +6,14 @@ import { IUserRepositoy } from '../../domain/repositories/IUserRepository';
 class CreateUserService {
   constructor(private repository: IUserRepositoy) {}
 
-  public async execute({ name, email }: ICreateUser): Promise<IUser> {
+  public async execute({ name, email, password }: ICreateUser): Promise<IUser> {
     const emailExists = await this.repository.findByEmail(email);
 
     if (emailExists) {
       throw new AppError('The email is in user');
     }
 
-    const user = await this.repository.create({ name, email });
+    const user = await this.repository.create({ name, email, password });
 
     return user;
   }

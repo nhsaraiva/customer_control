@@ -14,11 +14,13 @@ describe('UpdateUserService', () => {
     userCreated = await userRepository.create({
       name: 'Teste Saraiva',
       email: 'teste@saraiva.com',
+      password: 'testpassword',
     });
 
     await userRepository.create({
       name: 'Teste Saraiva 2',
       email: 'teste2@saraiva.com',
+      password: 'testpassword',
     });
 
     updateUserService = new UpdateUserService(userRepository);

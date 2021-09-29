@@ -14,6 +14,7 @@ describe('ShowUserService', () => {
     userCreated = await userRepository.create({
       name: 'Teste Saraiva',
       email: 'teste@email.com',
+      password: 'testpassword',
     });
 
     showUserService = new ShowUserService(userRepository);

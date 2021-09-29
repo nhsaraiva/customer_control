@@ -15,6 +15,7 @@ describe('CreateUserService', () => {
     const user = await createUserService.execute({
       name: 'Teste Saraiva',
       email: 'teste@saraiva.com',
+      password: 'testpassword',
     });
 
     expect(user).toHaveProperty('id');
@@ -24,12 +25,14 @@ describe('CreateUserService', () => {
     await createUserService.execute({
       name: 'Teste Saraiva 2',
       email: 'teste@saraiva.com',
+      password: 'testpassword',
     });
 
     expect(
       createUserService.execute({
         name: 'Teste Saraiva 3',
         email: 'teste@saraiva.com',
+        password: 'testpassword',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

@@ -14,6 +14,7 @@ describe('DeleteUserService', () => {
     userCreated = await userRepository.create({
       name: 'Teste Saraiva',
       email: 'teste@saraiva.com',
+      password: 'testpassword',
     });
 
     deleteUserService = new DeleteUserService(userRepository);

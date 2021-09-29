@@ -17,6 +17,7 @@ describe('IndexUserService', () => {
     await userRepository.create({
       name: 'Teste Saraiva',
       email: 'teste@saraiva.com',
+      password: 'testpassword',
     });
 
     expect(indexUserService.execute()).resolves.toHaveLength(1);

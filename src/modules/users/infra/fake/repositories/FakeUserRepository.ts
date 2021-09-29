@@ -7,12 +7,13 @@ import FakeUser from '../entities/FakeUser';
 class FakeUserRepository implements IUserRepositoy {
   private users: IUser[] = [];
 
-  public async create({ name, email }: ICreateUser): Promise<IUser> {
+  public async create({ name, email, password }: ICreateUser): Promise<IUser> {
     const user = new FakeUser();
 
     user.id = uuidv4();
     user.name = name;
     user.email = email;
+    user.password = password;
 
     this.users.push(user);
 
