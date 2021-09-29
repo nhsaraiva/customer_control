@@ -20,6 +20,14 @@ class FakeUserRepository implements IUserRepositoy {
     return user;
   }
 
+  public async save(user: IUser): Promise<IUser> {
+    const findIndex = this.users.findIndex(findUser => findUser.id === user.id);
+
+    this.users[findIndex] = user;
+
+    return user;
+  }
+
   public async findByEmail(email: string): Promise<IUser | undefined> {
     const user = this.users.find(user => user.email === email);
 

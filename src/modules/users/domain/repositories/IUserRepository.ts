@@ -5,4 +5,5 @@ export interface IUserRepositoy {
   create({ name, email, password }: ICreateUser): Promise<IUser>;
   findById(id: string): Promise<IUser | undefined>;
   findByEmail(email: string): Promise<IUser | undefined>;
+  save(user: IUser): Promise<IUser>;
 }

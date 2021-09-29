@@ -1,4 +1,4 @@
 export interface IHashProvider {
   generateHash(toHash: string): Promise<string>;
-  compare(hash: string, hashed: string): Promise<boolean>;
+  compare(noHash: string, hashed: string): Promise<boolean>;
 }

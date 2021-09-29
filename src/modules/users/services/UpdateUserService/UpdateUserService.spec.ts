@@ -2,14 +2,17 @@ import UpdateUserService from './UpdateUserService';
 import UserRepository from '../../infra/fake/repositories/FakeUserRepository';
 import { IUser } from '../../domain/models/IUser';
 import AppError from '../../../../shared/errors/AppError';
+import HashProvider from '../../../../shared/infra/fakes/FakeHashProvider';
 
 let userRepository: UserRepository;
+let hashProvider: HashProvider;
 let updateUserService: UpdateUserService;
 let userCreated: IUser;
 
 describe('UpdateUserService', () => {
   beforeEach(async () => {
     userRepository = new UserRepository();
+    hashProvider = new HashProvider();
 
     userCreated = await userRepository.create({
       name: 'Teste Saraiva',
@@ -23,7 +26,7 @@ describe('UpdateUserService', () => {
       password: 'testpassword',
     });
 
-    updateUserService = new UpdateUserService(userRepository);
+    updateUserService = new UpdateUserService(userRepository, hashProvider);
   });
 
   it('should return updated user if email not exists in another users', async () => {
