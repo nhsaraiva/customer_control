@@ -19,8 +19,13 @@ class FakeUserRepository implements IUserRepositoy {
 
     return user;
   }
+
   public async findAll(): Promise<IUser[]> {
     return this.users;
+  }
+
+  public async remove(id: string): Promise<void> {
+    return;
   }
 
   public async save(user: IUser): Promise<IUser> {

@@ -25,12 +25,12 @@ describe('DeleteUserService', () => {
       deleteUserService.execute({
         id: userCreated.id,
       }),
-    ).resolves.toBeNull();
+    ).resolves.toBeUndefined();
   });
 
   it('should return error if user not exists', async () => {
     expect(
-      await deleteUserService.execute({
+      deleteUserService.execute({
         id: 'idnotexists',
       }),
     ).rejects.toBeInstanceOf(AppError);
