@@ -1,6 +1,7 @@
-import ProductRepository from '../../infra/fake/repositories/FakeProductRepository';
+import ProductRepository from '../..//infra/fake/repositories/FakeProductRepository';
 import AppError from '../../../../shared/errors/AppError';
 import CreateProductService from './CreateProductService';
+import { Type } from '../../domain/enums/Type';
 
 let createProductService: CreateProductService;
 let productRepository: ProductRepository;
@@ -15,8 +16,8 @@ describe('CreateProductService', () => {
     const product = await createProductService.execute({
       name: 'Product One',
       value: 10.99,
-      payment_type: 'Monthly',
-      active: 1,
+      type: 'monthly' as Type,
+      active: true,
     });
 
     expect(product).toHaveProperty('id');
@@ -26,16 +27,16 @@ describe('CreateProductService', () => {
     await createProductService.execute({
       name: 'Product One',
       value: 10.99,
-      payment_type: 'Monthly',
-      active: 1,
+      type: 'monthly' as Type,
+      active: true,
     });
 
     expect(
       createProductService.execute({
         name: 'Product One',
         value: 10.99,
-        payment_type: 'Yearly',
-        active: 1,
+        type: 'yearly' as Type,
+        active: true,
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

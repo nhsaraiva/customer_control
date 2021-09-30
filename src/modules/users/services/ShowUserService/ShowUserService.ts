@@ -1,10 +1,10 @@
 import AppError from '../../../../shared/errors/AppError';
 import { IShowUser } from '../../domain/models/IShowUser';
 import { IUser } from '../../domain/models/IUser';
-import { IUserRepositoy } from '../../domain/repositories/IUserRepository';
+import { IUserRepository } from '../../domain/repositories/IUserRepository';
 
 class ShowUserService {
-  constructor(private repository: IUserRepositoy) {}
+  constructor(private repository: IUserRepository) {}
 
   public async execute({ id }: IShowUser): Promise<IUser> {
     const user = await this.repository.findById(id);

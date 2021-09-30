@@ -1,11 +1,11 @@
 import { IUser } from '../../domain/models/IUser';
-import { IUserRepositoy } from '../../domain/repositories/IUserRepository';
+import { IUserRepository } from '../../domain/repositories/IUserRepository';
 
 class IndexUserService {
-  constructor(private repository: IUserRepositoy) {}
+  constructor(private repository: IUserRepository) {}
 
   public async execute(): Promise<IUser[]> {
-    const users = this.repository.findAll();
+    const users = await this.repository.findAll();
 
     return users;
   }

@@ -2,11 +2,11 @@ import { IHashProvider } from '../../../../shared/domain/IHashProvider';
 import AppError from '../../../../shared/errors/AppError';
 import { IUpdateUser } from '../../domain/models/IUpdateUser';
 import { IUser } from '../../domain/models/IUser';
-import { IUserRepositoy } from '../../domain/repositories/IUserRepository';
+import { IUserRepository } from '../../domain/repositories/IUserRepository';
 
 class UpdateUserService {
   constructor(
-    private repository: IUserRepositoy,
+    private repository: IUserRepository,
     private hasProvider: IHashProvider,
   ) {}
 

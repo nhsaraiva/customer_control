@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import { ICreateUser } from '../../../domain/models/ICreateUser';
 import { IUser } from '../../../domain/models/IUser';
-import { IUserRepositoy } from '../../../domain/repositories/IUserRepository';
+import { IUserRepository } from '../../../domain/repositories/IUserRepository';
 import FakeUser from '../entities/FakeUser';
 
-class FakeUserRepository implements IUserRepositoy {
+class FakeUserRepository implements IUserRepository {
   private users: IUser[] = [];
 
   public async create({ name, email, password }: ICreateUser): Promise<IUser> {

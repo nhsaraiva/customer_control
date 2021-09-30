@@ -1,7 +1,7 @@
 import { ICreateUser } from '../models/ICreateUser';
 import { IUser } from '../models/IUser';
 
-export interface IUserRepositoy {
+export interface IUserRepository {
   create({ name, email, password }: ICreateUser): Promise<IUser>;
   findById(id: string): Promise<IUser | undefined>;
   findByEmail(email: string): Promise<IUser | undefined>;

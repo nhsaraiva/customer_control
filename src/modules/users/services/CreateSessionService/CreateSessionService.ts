@@ -1,17 +1,18 @@
 import AppError from '../../../../shared/errors/AppError';
 import { IHashProvider } from '../../../../shared/domain/IHashProvider';
 import { ILogin } from '../../domain/models/ILogin';
-import { IUserRepositoy } from '../../domain/repositories/IUserRepository';
-import { ITokenProvider } from 'src/shared/domain/ITokenProvider';
+import { IUserRepository } from '../../domain/repositories/IUserRepository';
+import { ITokenProvider } from '../../../../shared/domain/ITokenProvider';
+import { IUserLogin } from '../../domain/models/IUserLogin';
 
 class CreateSessionService {
   constructor(
-    private userRepository: IUserRepositoy,
+    private userRepository: IUserRepository,
     private hashProvider: IHashProvider,
     private tokenProvider: ITokenProvider,
   ) {}
 
-  public async execute({ email, password }: ILogin) {
+  public async execute({ email, password }: ILogin): Promise<IUserLogin> {
     const user = await this.userRepository.findByEmail(email);
 
     if (!user) {
@@ -28,7 +29,14 @@ class CreateSessionService {
     }
 
     //generate token
-    const token = 'TOKEN';
+    const token = await this.tokenProvider.sign(
+      {},
+      '850faad8955c4afa3983ad9cff370117',
+      {
+        subject: user.id,
+        expiresIn: '1d',
+      },
+    );
 
     return { token, user };
   }

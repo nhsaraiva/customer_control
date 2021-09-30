@@ -2,6 +2,7 @@ import DeleteProductService from './DeleteProductService';
 import ProductRepository from '../../infra/fake/repositories/FakeProductRepository';
 import { IProduct } from '../../domain/models/IProduct';
 import AppError from '../../../../shared/errors/AppError';
+import { Type } from '../../domain/enums/Type';
 
 let productRepository: ProductRepository;
 let deleteProductService: DeleteProductService;
@@ -14,8 +15,8 @@ describe('DeleteProductService', () => {
     productCreated = await productRepository.create({
       name: 'Product One',
       value: 10.99,
-      payment_type: 'Monthly',
-      active: 1,
+      type: 'monthly' as Type,
+      active: true,
     });
 
     deleteProductService = new DeleteProductService(productRepository);
