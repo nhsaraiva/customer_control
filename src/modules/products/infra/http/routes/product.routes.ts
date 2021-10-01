@@ -13,7 +13,7 @@ productRoutes.post(
     [Segments.BODY]: {
       name: Joi.string().required(),
       value: Joi.number().precision(2).required(),
-      type: Joi.equal(['perpetual', 'monthly', 'yearly']).required(),
+      type: Joi.equal('perpetual', 'monthly', 'yearly').required(),
       active: Joi.bool().required(),
     },
   }),
@@ -36,7 +36,7 @@ productRoutes.put(
     [Segments.BODY]: {
       name: Joi.string().required(),
       value: Joi.number().precision(2).required(),
-      type: Joi.equal(['perpetual', 'monthly', 'yearly']).required(),
+      type: Joi.equal('perpetual', 'monthly', 'yearly').required(),
       active: Joi.bool().required(),
     },
     [Segments.PARAMS]: {

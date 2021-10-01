@@ -14,7 +14,7 @@ customerRoutes.post(
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       phone: Joi.string().required(),
-      status: Joi.equal(['inNegociation', 'active', 'inactive']),
+      status: Joi.equal('inNegociation', 'active', 'inactive').required(),
     },
   }),
   customerController.create,
@@ -37,7 +37,7 @@ customerRoutes.put(
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       phone: Joi.string().required(),
-      status: Joi.equal(['inNegociation', 'active', 'inactive']),
+      status: Joi.equal('inNegociation', 'active', 'inactive').required(),
     },
     [Segments.PARAMS]: {
       id: Joi.string().uuid().required(),
