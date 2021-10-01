@@ -1,4 +1,4 @@
-import ProductRepository from '../..//infra/fake/repositories/FakeProductRepository';
+import ProductRepository from '../../infra/fake/repositories/FakeProductRepository';
 import AppError from '../../../../shared/errors/AppError';
 import CreateProductService from './CreateProductService';
 import { Type } from '../../domain/enums/Type';
@@ -36,6 +36,17 @@ describe('CreateProductService', () => {
         name: 'Product One',
         value: 10.99,
         type: 'yearly' as Type,
+        active: true,
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should return an error when creating a product with invalid type', async () => {
+    expect(
+      createProductService.execute({
+        name: 'Product One',
+        value: 10.99,
+        type: 'yearlys' as Type,
         active: true,
       }),
     ).rejects.toBeInstanceOf(AppError);

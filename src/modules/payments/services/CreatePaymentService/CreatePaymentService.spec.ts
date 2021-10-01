@@ -1,6 +1,12 @@
 import PaymentRepository from '../../infra/fake/repositories/FakePaymentRepository';
+import CustomerRepository from '../../../customers/infra/fake/repositories/FakeCustomerRepository';
+import ProductRepository from '../../../products/infra/fake/repositories/FakeProductRepository';
 import AppError from '../../../../shared/errors/AppError';
 import CreatePaymentService from './CreatePaymentService';
+import { Status } from 'src/modules/customers/domain/enums/Status';
+import { Type } from 'src/modules/products/domain/enums/Type';
+import { IProduct } from 'src/modules/products/domain/models/IProduct';
+import { ICustomer } from 'src/modules/customers/domain/models/ICustomer';
 
 let createPaymentService: CreatePaymentService;
 let paymentRepository: PaymentRepository;
@@ -17,25 +23,29 @@ describe('CreatePaymentService', () => {
       name: 'Customer One',
       email: 'customer@one.com',
       phone: '11958874800',
-      stauts: 'active',
+      status: 'active' as Status,
     });
 
     let productRepository = new ProductRepository();
     product = await productRepository.create({
       name: 'Product One',
       value: 10.99,
-      payment_type: 'Monthly',
-      active: 1,
+      type: 'monthly' as Type,
+      active: true,
     });
 
     perpetualProduct = await productRepository.create({
       name: 'Product Perpetual One',
       value: 10.99,
-      payment_type: 'Perpetual',
-      active: 1,
+      type: 'perpetual' as Type,
+      active: true,
     });
 
-    createPaymentService = new CreatePaymentService(paymentRepository);
+    createPaymentService = new CreatePaymentService(
+      paymentRepository,
+      customerRepository,
+      productRepository,
+    );
   });
 
   it('should create a payment successfully', async () => {

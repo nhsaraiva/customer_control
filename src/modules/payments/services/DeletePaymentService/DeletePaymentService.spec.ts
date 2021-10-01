@@ -1,7 +1,11 @@
 import DeletePaymentService from './DeletePaymentService';
 import PaymentRepository from '../../infra/fake/repositories/FakePaymentRepository';
 import { IPayment } from '../../domain/models/IPayment';
+import CustomerRepository from '../../../customers/infra/fake/repositories/FakeCustomerRepository';
+import ProductRepository from '../../../products/infra/fake/repositories/FakeProductRepository';
 import AppError from '../../../../shared/errors/AppError';
+import { Status } from '../../../customers/domain/enums/Status';
+import { Type } from '../../../products/domain/enums/Type';
 
 let paymentRepository: PaymentRepository;
 let deletePaymentService: DeletePaymentService;
@@ -16,15 +20,15 @@ describe('DeletePaymentService', () => {
       name: 'Customer One',
       email: 'customer@one.com',
       phone: '11958874800',
-      stauts: 'active',
+      status: 'active' as Status,
     });
 
     let productRepository = new ProductRepository();
     let product = await productRepository.create({
       name: 'Product One',
       value: 10.99,
-      payment_type: 'Monthly',
-      active: 1,
+      type: 'monthly' as Type,
+      active: true,
     });
 
     paymentCreated = await paymentRepository.create({
@@ -41,12 +45,12 @@ describe('DeletePaymentService', () => {
       deletePaymentService.execute({
         id: paymentCreated.id,
       }),
-    ).resolves.toBeNull();
+    ).resolves.toBeUndefined();
   });
 
   it('should return error if payment not exists', async () => {
     expect(
-      await deletePaymentService.execute({
+      deletePaymentService.execute({
         id: 'idnotexists',
       }),
     ).rejects.toBeInstanceOf(AppError);

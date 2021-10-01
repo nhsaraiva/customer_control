@@ -32,7 +32,7 @@ describe('DeleteProductService', () => {
 
   it('should return error if product not exists', async () => {
     expect(
-      await deleteProductService.execute({
+      deleteProductService.execute({
         id: 'idnotexists',
       }),
     ).rejects.toBeInstanceOf(AppError);
