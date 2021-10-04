@@ -1,4 +1,4 @@
-import { IPaymentRepository } from 'src/modules/payments/domain/repositories/IPaymentRepository';
+import { IPaymentRepository } from '../../../../modules/payments/domain/repositories/IPaymentRepository';
 import { inject, injectable } from 'tsyringe';
 import AppError from '../../../../shared/errors/AppError';
 import { IDeleteCustomer } from '../../domain/models/IDeleteCustomer';

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import CreatePaymentService from 'src/modules/payments/services/CreatePaymentService/CreatePaymentService';
-import DeletePaymentService from 'src/modules/payments/services/DeletePaymentService/DeletePaymentService';
+import CreatePaymentService from '../../../services/CreatePaymentService/CreatePaymentService';
+import DeletePaymentService from '../../../services/DeletePaymentService/DeletePaymentService';
 import { container } from 'tsyringe';
 
 class PaymentController {

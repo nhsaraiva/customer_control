@@ -19,7 +19,7 @@ import { IUserRepository } from '../../modules/users/domain/repositories/IUserRe
 import FakeUserRepository from '../../modules/users/infra/fake/repositories/FakeUserRepository';
 
 container.registerSingleton<IUserRepository>(
-  'UsersRepository',
+  'UserRepository',
   FakeUserRepository,
 );
 

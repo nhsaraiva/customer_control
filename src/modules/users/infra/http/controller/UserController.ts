@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import CreateUserService from 'src/modules/users/services/CreateUserService/CreateUserService';
-import DeleteUserService from 'src/modules/users/services/DeleteUserService/DeleteUserService';
-import IndexUserService from 'src/modules/users/services/IndexUserService/IndexUserService';
-import ShowUserService from 'src/modules/users/services/ShowUserService/ShowUserService';
-import UpdateUserService from 'src/modules/users/services/UpdateUserService/UpdateUserService';
+import CreateUserService from '../../../services/CreateUserService/CreateUserService';
+import DeleteUserService from '../../../services/DeleteUserService/DeleteUserService';
+import IndexUserService from '../../../services/IndexUserService/IndexUserService';
+import ShowUserService from '../../../services/ShowUserService/ShowUserService';
+import UpdateUserService from '../../../services/UpdateUserService/UpdateUserService';
 import { container } from 'tsyringe';
 
 class UserController {

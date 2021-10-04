@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import CreateCustomerService from 'src/modules/customers/services/CreateCustomerService/CreateCustomerService';
-import DeleteCustomerService from 'src/modules/customers/services/DeleteCustomerService/DeleteCustomerService';
-import IndexCustomerService from 'src/modules/customers/services/IndexCustomerService/IndexCustomerService';
-import ShowCustomerService from 'src/modules/customers/services/ShowCustomerService/ShowCustomerService';
-import UpdateCustomerService from 'src/modules/customers/services/UpdateCustomerService/UpdateCustomerService';
+import CreateCustomerService from '../../../services/CreateCustomerService/CreateCustomerService';
+import DeleteCustomerService from '../../../services/DeleteCustomerService/DeleteCustomerService';
+import IndexCustomerService from '../../../services/IndexCustomerService/IndexCustomerService';
+import ShowCustomerService from '../../../services/ShowCustomerService/ShowCustomerService';
+import UpdateCustomerService from '../../../services/UpdateCustomerService/UpdateCustomerService';
 import { container } from 'tsyringe';
 
 class CustomerController {

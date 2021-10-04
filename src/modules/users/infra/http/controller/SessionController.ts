@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import CreateSessionService from 'src/modules/users/services/CreateSessionService/CreateSessionService';
+import CreateSessionService from '../../../services/CreateSessionService/CreateSessionService';
 import { container } from 'tsyringe';
 
 class SessionController {
