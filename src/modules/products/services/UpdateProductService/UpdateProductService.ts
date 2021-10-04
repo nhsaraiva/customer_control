@@ -3,9 +3,13 @@ import { IUpdateProduct } from '../../domain/models/IUpdateProduct';
 import { IProduct } from '../../domain/models/IProduct';
 import { IProductRepository } from '../../domain/repositories/IProductRepository';
 import { Type } from '../../domain/enums/Type';
+import { inject, injectable } from 'tsyringe';
 
+@injectable()
 class UpdateProductService {
-  constructor(private repository: IProductRepository) {}
+  constructor(
+    @inject('ProductRepository') private repository: IProductRepository,
+  ) {}
 
   public async execute({
     id,

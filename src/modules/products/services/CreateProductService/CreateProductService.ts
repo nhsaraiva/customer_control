@@ -1,11 +1,16 @@
+import { inject, injectable } from 'tsyringe';
 import AppError from '../../../../shared/errors/AppError';
 import { Type } from '../../domain/enums/Type';
 import { ICreateProduct } from '../../domain/models/ICreateProduct';
 import { IProduct } from '../../domain/models/IProduct';
 import { IProductRepository } from '../../domain/repositories/IProductRepository';
 
+@injectable()
 class CreateProductService {
-  constructor(private repository: IProductRepository) {}
+  constructor(
+    @inject('ProductRepository')
+    private repository: IProductRepository,
+  ) {}
 
   public async execute({
     name,

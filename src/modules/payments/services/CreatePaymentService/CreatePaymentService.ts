@@ -5,11 +5,16 @@ import { ICreatePayment } from '../../domain/models/ICreatePayment';
 import { IPaymentRepository } from '../../domain/repositories/IPaymentRepository';
 import AppError from '../../../../shared/errors/AppError';
 import { IPayment } from '../../domain/models/IPayment';
+import { inject, injectable } from 'tsyringe';
 
+@injectable()
 class CreatePaymentService {
   constructor(
+    @inject('PaymentRepository')
     private repository: IPaymentRepository,
+    @inject('CustomerRepository')
     private customerRepository: ICustomerRepository,
+    @inject('ProductRepository')
     private productRepository: IProductRepository,
   ) {}
 

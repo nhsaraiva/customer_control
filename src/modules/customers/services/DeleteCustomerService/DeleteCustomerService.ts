@@ -1,11 +1,15 @@
 import { IPaymentRepository } from 'src/modules/payments/domain/repositories/IPaymentRepository';
+import { inject, injectable } from 'tsyringe';
 import AppError from '../../../../shared/errors/AppError';
 import { IDeleteCustomer } from '../../domain/models/IDeleteCustomer';
 import { ICustomerRepository } from '../../domain/repositories/ICustomerRepository';
 
+@injectable()
 class DeleteCustomerService {
   constructor(
+    @inject('CustomerRepository')
     private repository: ICustomerRepository,
+    @inject('PaymentRepository')
     private paymentRepository: IPaymentRepository,
   ) {}
 

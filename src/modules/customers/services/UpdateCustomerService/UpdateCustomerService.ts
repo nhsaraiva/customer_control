@@ -3,9 +3,14 @@ import { IUpdateCustomer } from '../../domain/models/IUpdateCustomer';
 import { ICustomer } from '../../domain/models/ICustomer';
 import { ICustomerRepository } from '../../domain/repositories/ICustomerRepository';
 import { Status } from '../../domain/enums/Status';
+import { inject, injectable } from 'tsyringe';
 
+@injectable()
 class UpdateCustomerService {
-  constructor(private repository: ICustomerRepository) {}
+  constructor(
+    @inject('CustomerRepository')
+    private repository: ICustomerRepository,
+  ) {}
 
   public async execute({
     id,

@@ -1,0 +1,57 @@
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+//USERS
+model User {
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  password String
+}
+
+//CUSTOMERS
+model Customer {
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  phone String
+  status Status @default(active)
+  payments Payment[]
+}
+
+enum Status {
+  inNegociation
+  active
+  inactive
+}
+
+//PRODUCTS
+model Product {
+  id String @id @default(uuid())
+  name String
+  value Decimal
+  type Type @default(monthly)
+  active Boolean
+  payments Payment[]
+}
+
+enum Type {
+  perpetual
+  monthly
+  yearly
+}
+
+//PAYMENTS
+model Payment {
+  id String @id @default(uuid())
+  customer Customer @relation(fields: [customerId], references: [id])
+  customerId String
+  product Product @relation(fields: [productId], references: [id])
+  productId String
+}

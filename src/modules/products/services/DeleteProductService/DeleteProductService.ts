@@ -1,10 +1,15 @@
+import { inject, injectable } from 'tsyringe';
 import AppError from '../../../../shared/errors/AppError';
 import { IProduct } from '../../domain/models/IProduct';
 import { IRemoveProduct } from '../../domain/models/IRemoveProduct';
 import { IProductRepository } from '../../domain/repositories/IProductRepository';
 
+@injectable()
 class DeleteProductService {
-  constructor(private repository: IProductRepository) {}
+  constructor(
+    @inject('ProductRepository')
+    private repository: IProductRepository,
+  ) {}
 
   public async execute({ id }: IRemoveProduct): Promise<IProduct> {
     const productExists = await this.repository.findById(id);

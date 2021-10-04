@@ -1,12 +1,31 @@
 import { Request, Response } from 'express';
+import CreatePaymentService from 'src/modules/payments/services/CreatePaymentService/CreatePaymentService';
+import DeletePaymentService from 'src/modules/payments/services/DeletePaymentService/DeletePaymentService';
+import { container } from 'tsyringe';
 
 class PaymentController {
   public async create(request: Request, response: Response): Promise<Response> {
-    return response.json({ testeCreate: true });
+    const { payment_date, customer_id, product_id } = request.body;
+
+    const createPaymentService = container.resolve(CreatePaymentService);
+
+    const payment = await createPaymentService.execute({
+      payment_date,
+      customer_id,
+      product_id,
+    });
+
+    return response.json(payment);
   }
 
   public async delete(request: Request, response: Response): Promise<Response> {
-    return response.json({ testeDelete: true });
+    const { id } = request.params;
+
+    const deletePaymentService = container.resolve(DeletePaymentService);
+
+    await deletePaymentService.execute({ id });
+
+    return response.json([]);
   }
 }
 

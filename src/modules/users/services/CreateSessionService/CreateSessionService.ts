@@ -4,11 +4,16 @@ import { ILogin } from '../../domain/models/ILogin';
 import { IUserRepository } from '../../domain/repositories/IUserRepository';
 import { ITokenProvider } from '../../../../shared/domain/ITokenProvider';
 import { IUserLogin } from '../../domain/models/IUserLogin';
+import { inject, injectable } from 'tsyringe';
 
+@injectable()
 class CreateSessionService {
   constructor(
+    @inject('UserRepository')
     private userRepository: IUserRepository,
+    @inject('HashProvider')
     private hashProvider: IHashProvider,
+    @inject('TokenProvider')
     private tokenProvider: ITokenProvider,
   ) {}
 

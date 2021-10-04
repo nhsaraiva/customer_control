@@ -1,12 +1,16 @@
+import { inject, injectable } from 'tsyringe';
 import { IHashProvider } from '../../../../shared/domain/IHashProvider';
 import AppError from '../../../../shared/errors/AppError';
 import { IUpdateUser } from '../../domain/models/IUpdateUser';
 import { IUser } from '../../domain/models/IUser';
 import { IUserRepository } from '../../domain/repositories/IUserRepository';
 
+@injectable()
 class UpdateUserService {
   constructor(
+    @inject('UserRepository')
     private repository: IUserRepository,
+    @inject('HashProvider')
     private hasProvider: IHashProvider,
   ) {}
 
