@@ -16,12 +16,9 @@ import { ICustomerRepository } from '../../modules/customers/domain/repositories
 import FakeCustomerRepository from '../../modules/customers/infra/fake/repositories/FakeCustomerRepository';
 
 import { IUserRepository } from '../../modules/users/domain/repositories/IUserRepository';
-import FakeUserRepository from '../../modules/users/infra/fake/repositories/FakeUserRepository';
+import UserRepository from '../../modules/users/infra/prisma/repositories/UserRepository';
 
-container.registerSingleton<IUserRepository>(
-  'UserRepository',
-  FakeUserRepository,
-);
+container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 
 container.registerSingleton<IHashProvider>('HashProvider', FakeHashProvider);
 

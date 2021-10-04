@@ -50,8 +50,8 @@ enum Type {
 //PAYMENTS
 model Payment {
   id String @id @default(uuid())
-  customer Customer @relation(fields: [customerId], references: [id])
-  customerId String
-  product Product @relation(fields: [productId], references: [id])
-  productId String
+  customer Customer @relation(fields: [customer_id], references: [id])
+  customer_id String
+  product Product @relation(fields: [product_id], references: [id])
+  product_id String
 }
