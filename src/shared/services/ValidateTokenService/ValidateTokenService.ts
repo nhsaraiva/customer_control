@@ -1,7 +1,7 @@
-import { ITokenProvider } from 'src/shared/domain/ITokenProvider';
+import { ITokenProvider } from '../../domain/ITokenProvider';
 import AppError from '../../../shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
-import { IValidateTokenHeader } from 'src/shared/domain/IValidateTokenHeader';
+import { IValidateTokenHeader } from '../../domain/IValidateTokenHeader';
 import { ITokenPayload } from '../../../shared/domain/ITokenPayload';
 
 @injectable()
@@ -19,7 +19,7 @@ class ValidateTokenService {
     const [, token] = authorization.split(' ');
 
     try {
-      const decodedToken = this.tokenProvider.verify(
+      const decodedToken = this.tokenProvider.verifyToken(
         token,
         '850faad8955c4afa3983ad9cff370117',
       );

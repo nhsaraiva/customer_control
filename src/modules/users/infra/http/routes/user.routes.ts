@@ -1,11 +1,10 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 import UserController from '../controller/UserController';
+import isAuthenticated from '../../../../../shared/http/middleware/isAuthenticated';
 
 const userRoutes = Router();
 const userController = new UserController();
-
-userRoutes.get('/', userController.index);
 
 userRoutes.post(
   '/',
@@ -18,6 +17,10 @@ userRoutes.post(
   }),
   userController.create,
 );
+
+userRoutes.use(isAuthenticated);
+
+userRoutes.get('/', userController.index);
 
 userRoutes.get(
   '/:id',

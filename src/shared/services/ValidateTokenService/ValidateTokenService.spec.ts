@@ -10,16 +10,22 @@ describe('ValidateTokenService', () => {
     validateTokenService = new ValidateTokenService(new FakeTokenProvider());
   });
 
-  it('should return error if token is invalid', async () => {
-    expect(
-      await validateTokenService.execute({
+  it('should return error if token is invalid', () => {
+    const executeFunction = () => {
+      validateTokenService.execute({
         authorization: 'invalid',
-      }),
-    ).rejects.toBeInstanceOf(AppError);
+      });
+    };
+
+    expect(executeFunction).toThrow(AppError);
   });
 
   it('should return error if token not found', () => {
-    expect(validateTokenService.execute({})).rejects.toBeInstanceOf(AppError);
+    const executeFunction = () => {
+      validateTokenService.execute({});
+    };
+
+    expect(executeFunction).toThrow(AppError);
   });
 
   it('should return true if token is valid', () => {

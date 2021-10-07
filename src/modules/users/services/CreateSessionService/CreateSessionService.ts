@@ -24,7 +24,7 @@ class CreateSessionService {
       throw new AppError('Invalid credentials');
     }
 
-    const isValidPassword = await this.hashProvider.compare(
+    const isValidPassword = await this.hashProvider.compareHash(
       password,
       user.password,
     );
@@ -34,7 +34,7 @@ class CreateSessionService {
     }
 
     //generate token
-    const token = await this.tokenProvider.sign(
+    const token = await this.tokenProvider.signToken(
       {},
       '850faad8955c4afa3983ad9cff370117',
       {

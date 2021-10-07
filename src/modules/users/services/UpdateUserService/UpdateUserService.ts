@@ -38,7 +38,7 @@ class UpdateUserService {
     }
 
     if (password && old_password) {
-      const oldPasswordIsValid = await this.hasProvider.compare(
+      const oldPasswordIsValid = await this.hasProvider.compareHash(
         old_password,
         user.password,
       );

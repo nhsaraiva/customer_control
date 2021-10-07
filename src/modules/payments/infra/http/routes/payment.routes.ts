@@ -1,9 +1,12 @@
 import { Router } from 'express';
 import PaymentController from '../controller/PaymentController';
 import { celebrate, Joi, Segments } from 'celebrate';
+import isAuthenticated from '../../../../../shared/http/middleware/isAuthenticated';
 
 const paymentRoutes = Router();
 const paymentController = new PaymentController();
+
+paymentRoutes.use(isAuthenticated);
 
 paymentRoutes.post(
   '/',
