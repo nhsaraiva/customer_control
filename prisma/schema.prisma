@@ -38,6 +38,7 @@ model Product {
 //PAYMENTS
 model Payment {
   id String @id @default(uuid())
+  payment_date String
   customer Customer @relation(fields: [customer_id], references: [id])
   customer_id String
   product Product @relation(fields: [product_id], references: [id])

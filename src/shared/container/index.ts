@@ -19,6 +19,7 @@ import { IUserRepository } from '../../modules/users/domain/repositories/IUserRe
 import UserRepository from '../../modules/users/infra/prisma/repositories/UserRepository';
 import ProductRepository from '../../modules/products/infra/prisma/repositories/ProductRepository';
 import CustomerRepository from '../../modules/customers/infra/prisma/repositories/CustomerRepository';
+import PaymentRepository from '../../modules/payments/infra/prisma/repositories/PaymentRepository';
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 
@@ -33,7 +34,7 @@ container.registerSingleton<IProductRepository>(
 
 container.registerSingleton<IPaymentRepository>(
   'PaymentRepository',
-  FakePaymentRepository,
+  PaymentRepository,
 );
 
 container.registerSingleton<ICustomerRepository>(
