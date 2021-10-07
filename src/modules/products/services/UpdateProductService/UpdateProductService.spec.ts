@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import UpdateProductService from './UpdateProductService';
 import ProductRepository from '../../infra/fake/repositories/FakeProductRepository';
 import { IProduct } from '../../domain/models/IProduct';

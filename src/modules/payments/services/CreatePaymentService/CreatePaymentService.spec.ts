@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import PaymentRepository from '../../infra/fake/repositories/FakePaymentRepository';
 import CustomerRepository from '../../../customers/infra/fake/repositories/FakeCustomerRepository';
 import ProductRepository from '../../../products/infra/fake/repositories/FakeProductRepository';

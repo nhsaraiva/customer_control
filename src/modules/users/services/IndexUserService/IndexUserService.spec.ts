@@ -1,7 +1,6 @@
+import 'reflect-metadata';
 import IndexUserService from './IndexUserService';
 import UserRepository from '../../infra/fake/repositories/FakeUserRepository';
-import { IUser } from '../../domain/models/IUser';
-import AppError from '../../../../shared/errors/AppError';
 
 let userRepository: UserRepository;
 let indexUserService: IndexUserService;

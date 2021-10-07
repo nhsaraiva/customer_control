@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import UpdateCustomerService from './UpdateCustomerService';
 import CustomerRepository from '../../infra/fake/repositories/FakeCustomerRepository';
 import { ICustomer } from '../../domain/models/ICustomer';

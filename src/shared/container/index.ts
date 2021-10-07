@@ -17,6 +17,7 @@ import FakeCustomerRepository from '../../modules/customers/infra/fake/repositor
 
 import { IUserRepository } from '../../modules/users/domain/repositories/IUserRepository';
 import UserRepository from '../../modules/users/infra/prisma/repositories/UserRepository';
+import ProductRepository from '../../modules/products/infra/prisma/repositories/ProductRepository';
 
 container.registerSingleton<IUserRepository>('UserRepository', UserRepository);
 
@@ -26,7 +27,7 @@ container.registerSingleton<ITokenProvider>('TokenProvider', FakeTokenProvider);
 
 container.registerSingleton<IProductRepository>(
   'ProductRepository',
-  FakeProductRepository,
+  ProductRepository,
 );
 
 container.registerSingleton<IPaymentRepository>(

@@ -1,6 +1,6 @@
-import { ICreateUser } from '../../domain/models/ICreateUser';
-import { IUser } from '../../domain/models/IUser';
-import { IUserRepository } from '../../domain/repositories/IUserRepository';
+import { ICreateUser } from '../../../domain/models/ICreateUser';
+import { IUser } from '../../../domain/models/IUser';
+import { IUserRepository } from '../../../domain/repositories/IUserRepository';
 import { PrismaClient } from '@prisma/client';
 
 class UserRepository implements IUserRepository {

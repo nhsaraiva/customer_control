@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import DeletePaymentService from './DeletePaymentService';
 import PaymentRepository from '../../infra/fake/repositories/FakePaymentRepository';
 import { IPayment } from '../../domain/models/IPayment';

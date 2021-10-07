@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import UpdateUserService from './UpdateUserService';
 import UserRepository from '../../infra/fake/repositories/FakeUserRepository';
 import { IUser } from '../../domain/models/IUser';

@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import IndexCustomerService from './IndexCustomerService';
 import CustomerRepository from '../../infra/fake/repositories/FakeCustomerRepository';
 import { ICustomer } from '../../domain/models/ICustomer';

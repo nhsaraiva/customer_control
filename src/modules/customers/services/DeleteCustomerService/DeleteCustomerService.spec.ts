@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import DeleteCustomerService from './DeleteCustomerService';
 import CustomerRepository from '../../infra/fake/repositories/FakeCustomerRepository';
 import PaymentRepository from '../../../payments/infra/fake/repositories/FakePaymentRepository';

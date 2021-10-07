@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import UserRepository from '../../infra/fake/repositories/FakeUserRepository';
 import AppError from '../../../../shared/errors/AppError';
 import CreateUserService from './CreateUserService';

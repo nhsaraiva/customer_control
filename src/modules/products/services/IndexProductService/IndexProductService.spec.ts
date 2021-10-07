@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import IndexProductService from './IndexProductService';
 import ProductRepository from '../../infra/fake/repositories/FakeProductRepository';
 import { Type } from '../../domain/enums/Type';

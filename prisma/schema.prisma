@@ -21,14 +21,8 @@ model Customer {
   name String
   email String @unique
   phone String
-  status Status @default(active)
+  status String
   payments Payment[]
-}
-
-enum Status {
-  inNegociation
-  active
-  inactive
 }
 
 //PRODUCTS
@@ -36,15 +30,9 @@ model Product {
   id String @id @default(uuid())
   name String
   value Decimal
-  type Type @default(monthly)
+  type String
   active Boolean
   payments Payment[]
-}
-
-enum Type {
-  perpetual
-  monthly
-  yearly
 }
 
 //PAYMENTS
